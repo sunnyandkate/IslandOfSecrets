@@ -14,9 +14,10 @@ public class Player : MonoBehaviour
     private Vector2 moveDirection;
 
     private GameManager gameManager;
+    LevelManager levelManager;
     private Animator animator;
     private SceneChanger sceneChanger;
-    private SavingPointManager savingPointManager;
+    
     private SecretsManager secretsManager;
 
     private Vector3 respawnPosition;
@@ -28,12 +29,18 @@ public class Player : MonoBehaviour
     //player position
     public PlayerPosition playerStartPosition;
 
+
+    //torch
+    public GameObject torchLight;
+
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         gameManager = FindObjectOfType<GameManager>();
+        levelManager = FindObjectOfType<LevelManager>();
         animator = GetComponent<Animator>();
         sceneChanger = FindObjectOfType<SceneChanger>();
         secretsManager = FindObjectOfType<SecretsManager>();
@@ -44,7 +51,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerSpriteAnimation();   
+       
     }
      
     private void FixedUpdate(){
@@ -66,8 +73,7 @@ public class Player : MonoBehaviour
             animator.SetFloat("MoveY", yInput);
         } 
     }
-     private void PlayerSpriteAnimation(){
-     }
+    
 
     private void OnTriggerEnter2D(Collider2D other){
         //if the player is hitting a secret
@@ -77,7 +83,14 @@ public class Player : MonoBehaviour
             //and send the foundsecret to the secretsmanager
             foundSecret = other.gameObject.name;
             secretsManager.UpdateFoundSecrets(foundSecret);
+            levelManager.SaveData();
                
+        }
+        if(other.gameObject.tag == "Torch"){
+            torchLight.SetActive(true);
+        }
+        if(other.gameObject.tag == "TorchOff"){
+            torchLight.SetActive(false);
         }
        
     }

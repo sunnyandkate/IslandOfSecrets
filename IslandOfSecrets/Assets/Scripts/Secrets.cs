@@ -43,7 +43,7 @@ public class Secrets : MonoBehaviour
         if(other.gameObject.tag == "Player"){
             secretFound = true;
             ChangeSecretsImage();
-            levelManager.SaveData();          
+           // levelManager.SaveData();          
         }       
     }
      public void OnTriggerExit2D(Collider2D other){

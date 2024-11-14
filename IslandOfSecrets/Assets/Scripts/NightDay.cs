@@ -7,6 +7,7 @@ public class NightDay : MonoBehaviour
     public GameObject lizard;
 
     NPCManager npcManager;
+    LevelManager levelManager;
 
     public int timeofday;
     public bool dayTime;
@@ -22,6 +23,7 @@ public class NightDay : MonoBehaviour
     {
         timeofday = System.DateTime.Now.Hour;
         npcManager = FindObjectOfType<NPCManager>();
+        levelManager = FindObjectOfType<LevelManager>();
 
         foundClock = secretsValue.foundClockValue;
        
@@ -53,12 +55,20 @@ public class NightDay : MonoBehaviour
     public void ChangeToDayTime(){
         foundClock = true;
         dayTime = true;
-        nightTime = false;        
+        nightTime = false;    
+        secretsValue.dayTimeValue = true;
+        secretsValue.nightTimeValue = false;
+        secretsValue.foundClockValue = true;
+        levelManager.SaveData();       
     }
     public void ChangeToNightTime(){
         foundClock = true;
         nightTime = true;
         dayTime = false;
+        secretsValue.dayTimeValue = false;
+        secretsValue.nightTimeValue = true;
+        secretsValue.foundClockValue = true;
+        levelManager.SaveData();
     }
     public void CheckNPCPositions(){
 

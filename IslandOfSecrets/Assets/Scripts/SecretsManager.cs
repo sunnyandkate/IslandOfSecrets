@@ -131,15 +131,18 @@ public class SecretsManager : MonoBehaviour
                 npcManager.Lizard.SetActive(false);
             }
            
-        }        
+        }  
+        secretsValue.secretOneValue = true;      
     }
     public void SecretTwoFound(){
        //show secret two in secretsmenu
         SecretTwo.SetActive(true);
+        secretsValue.secretTwoValue = true;
      }
     public void SecretThreeFound(){
        //show secret three in secretsmenu
         SecretThree.SetActive(true);
+        secretsValue.secretThreeValue = true;
      }
     public void SecretFourFound(){
      
@@ -148,6 +151,7 @@ public class SecretsManager : MonoBehaviour
             npcManager.TigerAtBeach.SetActive(true);
             npcManager.Tiger.SetActive(false);
         }
+        secretsValue.secretFourValue = true;
      }
     public void SecretFiveFound(){
        
@@ -155,10 +159,12 @@ public class SecretsManager : MonoBehaviour
         if(npcManager.Diamond != null){
             npcManager.Diamond.SetActive(true);
         }
+        secretsValue.secretFiveValue = true;
      }
       public void SecretSixFound(){
       
         SecretSix.SetActive(true);
+        secretsValue.secretSixValue = true;
      }
 
 }

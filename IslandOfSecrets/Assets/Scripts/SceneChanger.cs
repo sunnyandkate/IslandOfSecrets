@@ -41,7 +41,7 @@ public class SceneChanger : MonoBehaviour
             
           //when we change the scene-> save collected items and set player on area entrance position
           playerStartPosition.playerInitialValue = playerPosition;
-          SaveSecrets();
+       
           levelManager.SaveData();
                
           FadeInCanvas.SetActive(true);
@@ -50,7 +50,5 @@ public class SceneChanger : MonoBehaviour
         
         }
      }
-     public void SaveSecrets(){
-      foundSecrets.secretOneValue = levelManager.intToBool(PlayerPrefs.GetInt("foundSecretOne", 0));
-     }
+    
 }

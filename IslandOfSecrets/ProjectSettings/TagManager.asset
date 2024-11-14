@@ -8,6 +8,8 @@ TagManager:
   - Object
   - Floor
   - Secret
+  - Torch
+  - TorchOff
   layers:
   - Default
   - TransparentFX

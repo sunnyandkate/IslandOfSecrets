@@ -66,6 +66,8 @@ public class GameStart : MonoBehaviour
     public void ResetSecrets(){
 
         foundSecretsValue.foundClockValue = false;
+        foundSecretsValue.nightTimeValue = false;
+        foundSecretsValue.dayTimeValue = false;
         foundSecretsValue.treasureChestValue = false;
         foundSecretsValue.foundCatValue = false;
         foundSecretsValue.secretOneValue = false;
